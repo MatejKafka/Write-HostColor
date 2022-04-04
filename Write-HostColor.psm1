@@ -37,6 +37,11 @@ function GetColorEscapeSequence($Color, $PSStylePalette) {
 		$R, $G, $B = 1, 3, 5 | % {[Convert]::FromHexString($Color.Substring($_, 2))}
 		return $PSStylePalette.FromRgb($R, $G, $B)
 
+	} elseif ($Color.Length -eq 4 -and $Color[0] -eq "#") {
+		# CSS color, short version (e.g. #abc)
+		$R, $G, $B = 1, 2, 3 | % {[Convert]::FromHexString($Color[$_] + $Color[$_])}
+		return $PSStylePalette.FromRgb($R, $G, $B)
+
 	} elseif ($Color[0] -eq 27 -and $Color[-1] -eq 109) {
 		# VT color escape sequence, leave unchanged
 		# this may be an arbitrary escape sequence, not just a color, but I don't want to write a VT parser here
