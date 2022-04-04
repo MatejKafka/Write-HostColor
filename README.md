@@ -2,6 +2,10 @@
 
 `Write-Host`, but with full RGB colors. Requires PowerShell Core 7.2+.
 
+## Installation
+
+Clone this repository to a directory that's in your `$env:PSModulePath`.
+
 ## How to use
 
 The API is the same as the `Write-Host` cmdlet, but both `-ForegroundColor` and `-BackgroundColor` parameters support extra color formats:
