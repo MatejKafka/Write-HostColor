@@ -55,6 +55,28 @@ function GetColorEscapeSequence($Color, $PSStylePalette) {
 	}
 }
 
+enum EscapeSequenceType {Foreground; Background}
+
+function Get-ColorEscapeSequence {
+	[CmdletBinding()]
+	param(
+			[Parameter(Mandatory)]
+			[EscapeSequenceType]
+		$Type,
+			[Parameter(Mandatory)]
+			[ArgumentCompletions("Black", "DarkBlue", "DarkGreen", "DarkCyan", "DarkRed",
+				"DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan",
+				"Red", "Magenta", "Yellow", "White")]
+		$Color
+	)
+
+	if ($Type -eq [EscapeSequenceType]::Foreground) {
+		return GetColorEscapeSequence $Color $PSStyle.Foreground
+	} else {
+		return GetColorEscapeSequence $Color $PSStyle.Background
+	}
+}
+
 function Write-HostColor {
 	[CmdletBinding()]
 	param(

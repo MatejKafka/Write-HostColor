@@ -4,7 +4,7 @@
 	GUID = '1e98ef1c-6403-42ed-a296-7f5112428f86'
 	Author = 'Matej Kafka'
 
-	FunctionsToExport = @("Write-HostColor")
+	FunctionsToExport = @("Write-HostColor", "Get-ColorEscapeSequence")
 	CmdletsToExport = @()
 	VariablesToExport = @()
 	AliasesToExport = @()

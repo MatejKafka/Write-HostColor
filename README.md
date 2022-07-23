@@ -19,6 +19,14 @@ The API is the same as the `Write-Host` cmdlet, but both `-ForegroundColor` and 
 - VT escape sequences
 	e.g. `Write-HostColor "hello" -ForegroundColor $PSStyle.Foreground.Red`
 
+Additionally, the `Get-ColorEscapeSequence` function lets you retrieve the raw VT escape sequence in case you're building an output string manually. Example:
+
+```powershell
+(Get-ColorEscapeSequence Foreground "#ff00dd") + "test" + $PSStyle.Reset
+```
+
+
+
 ## Why wouldn't I just use [Pansies](https://github.com/PoshCode/Pansies/) instead?
 
 ![Pansies take a long time to load.](./pansies_comparison.png)
